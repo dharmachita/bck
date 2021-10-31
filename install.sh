@@ -13,20 +13,19 @@ echo "####################################################### "
 echo "#GENERATING CRYPTO KEYS# "
 echo "####################################################### "
 
-cryptopath=$PWD/config/crypto-config.yaml
+path=$PWD/config
 sudo mkdir -p $HOME/blockchain/ && cd $HOME/blockchain/
-cryptogen generate --config=$cryptopath
-
+cryptogen generate --config=$path/crypto-config.yaml
 
 echo "####################################################### "
 echo "#GENERATING GENESIS BLOCK TX# "
 echo "####################################################### "
 
-configpath=$PWD/config/configtx.yaml
+sudo mkdir -p artifacts
+cd $path
 PROFILEBLOCK="ThreeOrgsOrdererGenesis"
-CHANNELID="system_channel"
-configtxgen -profile $PROFILE -channelID $CHANNELID -outputBlock $HOME/blockchain/genesis.block
-
+CHANNELID="system-channel"
+configtxgen -profile $PROFILEBLOCK -channelID $CHANNELID -outputBlock $HOME/blockchain/artifacts/genesis.block
 
 echo "####################################################### "
 echo "#GENERATING CHANNEL TX# "
@@ -34,5 +33,5 @@ echo "####################################################### "
 
 PROFILECHANNEL="ThreeOrgsChannel"
 CHANNELNAME="marketplace"
-configtxgen -profile $PROFILE -channelID $CHANNELNAME -outputCreateChannelTx $HOME/blockchain/channel.tx
+configtxgen -profile $PROFILECHANNEL -channelID $CHANNELNAME -outputCreateChannelTx $HOME/blockchain/artifacts/channel.tx
 
