@@ -54,13 +54,6 @@ echo "#ANCHOR PEERS TX# "
 echo "####################################################### "
 echo ""
 
-#ANCHORPEER1=$workdir"/blockchain/artifacts/Org1MSP.tx"
-#ANCHORPEER2=$workdir"/blockchain/artifacts/Org2MSP.tx"
-#ANCHORPEER3=$workdir"/blockchain/artifacts/Org3MSP.tx"
-#configtxgen -profile $PROFILECHANNEL -outputAnchorPeersUpdate $ANCHORPEER1 -channelID $CHANNELNAME -asOrg Org1MSP -configPath $CONFIGPATH
-#configtxgen -profile $PROFILECHANNEL -outputAnchorPeersUpdate $ANCHORPEER2 -channelID $CHANNELNAME -asOrg Org2MSP -configPath $CONFIGPATH
-#configtxgen -profile $PROFILECHANNEL -outputAnchorPeersUpdate $ANCHORPEER3 -channelID $CHANNELNAME -asOrg Org3MSP -configPath $CONFIGPATH
-
 anchors_array=($workdir"/blockchain/artifacts/Org1MSP.tx" $workdir"/blockchain/artifacts/Org2MSP.tx" $workdir"/blockchain/artifacts/Org3MSP.tx")
 for ((i = 0; i < ${#anchors_array[@]}; ++i)); do
     configtxgen -profile $PROFILECHANNEL -outputAnchorPeersUpdate ${anchors_array[i]} -channelID $CHANNELNAME -asOrg Org${i+1}MSP -configPath $CONFIGPATH
