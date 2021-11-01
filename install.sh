@@ -5,27 +5,30 @@
 # email: mauro.e.rambo@gmail.com
 #
 
-# Prerequisites installation
+# Dependencies Installation
 
 #prereq/prereq.sh
+
+#Instalation directory
+workdir=$PWD
+sudo mkdir blockchain && cd blockchain
 
 echo "####################################################### "
 echo "#GENERATING CRYPTO KEYS# "
 echo "####################################################### "
 
-path=$PWD/config
-sudo mkdir -p $HOME/blockchain/ && cd $HOME/blockchain/
-cryptogen generate --config=$path/crypto-config.yaml
+cryptogen generate --config=$workdir/config/crypto-config.yaml
 
 echo "####################################################### "
 echo "#GENERATING GENESIS BLOCK TX# "
 echo "####################################################### "
 
 sudo mkdir -p artifacts
-cd $path
 PROFILEBLOCK="ThreeOrgsOrdererGenesis"
 CHANNELID="system-channel"
-configtxgen -profile $PROFILEBLOCK -channelID $CHANNELID -outputBlock $HOME/blockchain/artifacts/genesis.block
+CONFIGPATH=$workdir+"/config/configtx.yaml"
+OUTPUT=$workdir+"/blockchain/artifacts/genesis.block"
+configtxgen -profile $PROFILEBLOCK -channelID $CHANNELID -outputBlock $OUTPUT -configPath $CONFIGPATH
 
 echo "####################################################### "
 echo "#GENERATING CHANNEL TX# "
@@ -33,5 +36,6 @@ echo "####################################################### "
 
 PROFILECHANNEL="ThreeOrgsChannel"
 CHANNELNAME="marketplace"
-configtxgen -profile $PROFILECHANNEL -channelID $CHANNELNAME -outputCreateChannelTx $HOME/blockchain/artifacts/channel.tx
+OUTPUT=$workdir+"/blockchain/artifacts/channel.tx"
+configtxgen -profile $PROFILECHANNEL -channelID $CHANNELNAME -outputCreateChannelTx $OUTPUT -configPath $CONFIGPATH
 
