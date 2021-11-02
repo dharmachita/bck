@@ -7,7 +7,7 @@
 
 # Dependencies Installation
 
-#prereq/prereq.sh
+prereq/prereq.sh
 
 #Instalation directory
 
