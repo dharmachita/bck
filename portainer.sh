@@ -33,4 +33,4 @@ echo "####################################################### "
 echo ""
 
 prip="$(curl ifconfig.me)"
-echo "Iniciar en el navegador http://localhost:9000 ó "$prip":9000 para setear las credenciales."
+echo "Iniciar en el navegador http://localhost:9000 ó http://"$prip":9000 para setear las credenciales y acceder al dashboard."
