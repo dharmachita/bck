@@ -27,11 +27,11 @@ services:
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric
     command: orderer
     volumes:
-    - ../channel-artifacts/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+    - ../blockchain/artifacts/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
     # ---CHANGED--- the path is different to reflect our company's domain
-    - ../crypto-config/ordererOrganizations/acme.com/orderers/orderer.acme.com/msp:/var/hyperledger/orderer/msp
+    - ../blockchain/crypto-config/ordererOrganizations/acme.com/orderers/orderer.acme.com/msp:/var/hyperledger/orderer/msp
     # ---CHANGED--- the path is different to reflect our company's domain
-    - ../crypto-config/ordererOrganizations/acme.com/orderers/orderer.acme.com/tls/:/var/hyperledger/orderer/tls
+    - ../blockchain/crypto-config/ordererOrganizations/acme.com/orderers/orderer.acme.com/tls/:/var/hyperledger/orderer/tls
     ports:
       - 7050:7050
 
@@ -55,9 +55,9 @@ services:
     volumes:
         - /var/run/:/host/var/run/
         # ---CHANGED--- changed to reflect peer name, org name and our company's domain
-        - ../crypto-config/peerOrganizations/org1.acme.com/peers/peer0.org1.acme.com/msp:/etc/hyperledger/fabric/msp
+        - ../blockchain/crypto-config/peerOrganizations/org1.acme.com/peers/peer0.org1.acme.com/msp:/etc/hyperledger/fabric/msp
         # ---CHANGED--- changed to reflect peer name, org name and our company's domain
-        - ../crypto-config/peerOrganizations/org1.acme.com/peers/peer0.org1.acme.com/tls:/etc/hyperledger/fabric/tls
+        - ../blockchain/crypto-config/peerOrganizations/org1.acme.com/peers/peer0.org1.acme.com/tls:/etc/hyperledger/fabric/tls
     ports:
       - 7051:7051
       - 7053:7053
@@ -83,9 +83,9 @@ services:
     volumes:
         - /var/run/:/host/var/run/
         # ---CHANGED--- changed to reflect peer name, org name and our company's domain
-        - ../crypto-config/peerOrganizations/org2.acme.com/peers/peer0.org2.acme.com/msp:/etc/hyperledger/fabric/msp
+        - ../blockchain/crypto-config/peerOrganizations/org2.acme.com/peers/peer0.org2.acme.com/msp:/etc/hyperledger/fabric/msp
         # ---CHANGED--- changed to reflect peer name, org name and our company's domain
-        - ../crypto-config/peerOrganizations/org2.acme.com/peers/peer0.org2.acme.com/tls:/etc/hyperledger/fabric/tls
+        - ../blockchain/crypto-config/peerOrganizations/org2.acme.com/peers/peer0.org2.acme.com/tls:/etc/hyperledger/fabric/tls
 
     ports:
       - 8051:7051
@@ -112,9 +112,9 @@ services:
     volumes:
         - /var/run/:/host/var/run/
         # ---CHANGED--- changed to reflect peer name, org name and our company's domain
-        - ../crypto-config/peerOrganizations/org3.acme.com/peers/peer0.org3.acme.com/msp:/etc/hyperledger/fabric/msp
+        - ../blockchain/crypto-config/peerOrganizations/org3.acme.com/peers/peer0.org3.acme.com/msp:/etc/hyperledger/fabric/msp
         # ---CHANGED--- changed to reflect peer name, org name and our company's domain
-        - ../crypto-config/peerOrganizations/org3.acme.com/peers/peer0.org3.acme.com/tls:/etc/hyperledger/fabric/tls
+        - ../blockchain/crypto-config/peerOrganizations/org3.acme.com/peers/peer0.org3.acme.com/tls:/etc/hyperledger/fabric/tls
     ports:
       - 9051:7051
       - 9053:7053

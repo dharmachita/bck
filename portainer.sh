@@ -5,6 +5,11 @@
 # email: mauro.e.rambo@gmail.com
 #
 
+#utils
+sudo apt-get install curl
+sudo zypper install curl
+
+
 echo ""
 echo "####################################################### "
 echo "#STARTING PORTAINER# "
@@ -19,11 +24,13 @@ docker run -d -p 8000:8000 -p 9000:9000 --name portainer \
     -v portainer_data:/data \
     portainer/portainer-ce:latest
 
-https://localhost:9000   
+
 
 echo ""
 echo "####################################################### "
-echo "INICIAR LOCALHOST:9000 EN EL NAVEGADOR..."
+echo "INICIAR NAVEGADOR"
 echo "####################################################### "
 echo ""
 
+prip="$(curl ifconfig.me)"
+echo "Iniciar en el navegador http://localhost:9000 ó "$prip":9000 para setear las credenciales."

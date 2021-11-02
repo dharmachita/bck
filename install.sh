@@ -54,9 +54,9 @@ echo "#ANCHOR PEERS TX# "
 echo "####################################################### "
 echo ""
 
-anchor_array=($workdir"/blockchain/artifacts/Org1MSP.tx" $workdir"/blockchain/artifacts/Org2MSP.tx" $workdir"/blockchain/artifacts/Org3MSP.tx")
+anchor_array=($workdir"/blockchain/artifacts/Org1MSPanchors.tx" $workdir"/blockchain/artifacts/Org2MSPanchors.tx" $workdir"/blockchain/artifacts/Org3MSPanchors.tx")
 for ((i = 0; i < ${#anchor_array[@]}; ++i)); do
-    configtxgen -profile $PROFILECHANNEL -outputAnchorPeersUpdate ${anchor_array[i]} -channelID $CHANNELNAME -asOrg Org${i}MSP -configPath $CONFIGPATH
+    configtxgen -profile $PROFILECHANNEL -outputAnchorPeersUpdate ${anchor_array[i]} -channelID $CHANNELNAME -asOrg Org${i+1}MSP -configPath $CONFIGPATH
 done
 
 echo ""
@@ -65,5 +65,8 @@ echo "#STARTING NETWORK# "
 echo "####################################################### "
 echo ""
 
+export VERBOSE=false
+export FABRIC_CFG_PATH=$workdir
 
+CHANNEL_NAME=$CHANNELNAME docker-compose -f $workdir/docker-compose-cli-couchdb.yaml up -d
 
