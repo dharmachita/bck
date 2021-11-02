@@ -57,7 +57,7 @@ echo ""
 
 anchor_array=($workdir"/blockchain/artifacts/Org1MSPanchors.tx" $workdir"/blockchain/artifacts/Org2MSPanchors.tx" $workdir"/blockchain/artifacts/Org3MSPanchors.tx")
 for ((i = 0; i < ${#anchor_array[@]}; ++i)); do
-    configtxgen -profile $PROFILECHANNEL -outputAnchorPeersUpdate ${anchor_array[i]} -channelID $CHANNELNAME -asOrg Org${i+1}MSP -configPath $CONFIGPATH
+    configtxgen -profile $PROFILECHANNEL -outputAnchorPeersUpdate ${anchor_array[i]} -channelID $CHANNELNAME -asOrg Org$((i+1))MSP -configPath $CONFIGPATH
 done
 
 echo ""
@@ -82,3 +82,4 @@ echo ""
 
 docker exec cli chmod +x scripts/init.sh
 docker exec cli scripts/init.sh
+
