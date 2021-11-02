@@ -80,4 +80,5 @@ echo "#DENTRO DEL CLI# "
 echo "####################################################### "
 echo "" 
 
-docker exec -it cli /bin/bash && scripts/init.sh
+docker exec cli chmod +x scripts/init.sh
+docker exec cli scripts/init.sh
