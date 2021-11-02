@@ -65,8 +65,11 @@ echo "#STARTING NETWORK# "
 echo "####################################################### "
 echo ""
 
+#docker rm -vf $(docker ps -a -q)
+#docker rmi -f $(docker images -a -q)
+
 export VERBOSE=false
 export FABRIC_CFG_PATH=$workdir
 
-CHANNEL_NAME=$CHANNELNAME docker-compose -f $workdir/docker-compose-cli-couchdb.yaml up -d
+CHANNEL_NAME=$CHANNELNAME docker-compose -f $workdir/docker-base/docker-compose-cli-couchdb.yaml up -d
 

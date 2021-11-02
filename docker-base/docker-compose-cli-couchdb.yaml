@@ -132,7 +132,7 @@ services:
         # ---CHANGED--- chaincode path adjusted
         - ../blockchain/chaincode/:/opt/gopath/src/github.com/chaincode
         - ../blockchain/crypto-config:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/
-        - ../blockchain/channel-artifacts:/opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts
+        - ../blockchain/artifacts:/opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts
     depends_on:
        # ---CHANGED--- reference to our orderer
       - orderer.acme.com
