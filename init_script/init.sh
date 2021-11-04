@@ -25,12 +25,15 @@ CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypt
 #Definir anchorpeer para Org3
 CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org3.acme.com/users/Admin@org3.acme.com/msp CORE_PEER_ADDRESS=peer0.org3.acme.com:7051 CORE_PEER_LOCALMSPID="Org3MSP" CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org3.acme.com/peers/peer0.org3.acme.com/tls/ca.crt peer channel update -o orderer.acme.com:7050 -c $CHANNEL_NAME -f ./channel-artifacts/Org3MSPanchors.tx --tls true --cafile $ORDERER_CA
 
+#github.com/cucumber/godog@v0.8.0/go.mod: checksum mismatch
+#        downloaded: h1:Cp3tEV1LRAyH/RuCThcxHS/+9ORZ+FMzPva2AZ5Ki+A=
+#        go.sum:     h1:FQ2MobPXycdSajAK3inNgLSAKGFmZqbE4S/CExz41Ys=
 
 #Empaquetar los smart contracts
-#peer lifecycle chaincode package ${CHAINCODE_NAME}.tar.gz --path $CC_SRC_PATH --lang golang --label ${CHAINCODE_NAME}_${CHAINCODE_VERSION} >&log.txt
+peer lifecycle chaincode package ${CHAINCODE_NAME}.tar.gz --path $CC_SRC_PATH --lang golang --label ${CHAINCODE_NAME}_${CHAINCODE_VERSION} >&log.txt
 
 #Instalar smart contracts en los peers
-#peer lifecycle chaincode install ${CHAINCODE_NAME}.tar.gz
+peer lifecycle chaincode install ${CHAINCODE_NAME}.tar.gz
 #ver de obtener el valor del package id como salida del siguiente comando
 #peer lifecycle chaincode queryinstalled --peerAddresses peer0.org1.example.com:7051
 

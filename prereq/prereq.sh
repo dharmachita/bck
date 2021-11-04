@@ -164,3 +164,5 @@ sudo curl -sSL http://bit.ly/2ysbOFE | bash -s 2.2.0
 
 echo 'export PATH=$PATH:$HOME/hyperledger/fabric/fabric-samples/bin' >> ~/.profile
 source ~/.profile
+
+sudo apt-get install build-essential -y

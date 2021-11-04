@@ -21,7 +21,7 @@ type Food struct {
 
 func (s *SmartContract) Set(ctx contractapi.TransactionContextInterface, foodId string, farmer string, variety string ) error {
 	
-	food, err : = Query(ctx, foodId)
+	food, err := Query(ctx, foodId)
 	if fodd != nil {
 		fmt.Printf("foodId already exists: %s", err.Error())
 		return err
@@ -29,7 +29,7 @@ func (s *SmartContract) Set(ctx contractapi.TransactionContextInterface, foodId 
 	
 	food := Food{
 		Farmer: farmer, 
-		Variety: variety
+		Variety: variety,
 	}
 
 	foodAsBytes, err := json.Marshal(food)

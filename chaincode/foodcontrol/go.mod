@@ -1,4 +1,4 @@
-module github.com/blockchainempresarial/curos-hyperledger-fabric/chaincode/foodcontrol
+module github.com/dharmachita/bck/tree/main/chaincode/foodcontrol
 
 go 1.13
 
