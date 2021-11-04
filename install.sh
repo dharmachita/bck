@@ -7,27 +7,26 @@
 
 # Dependencies Installation
 
-prereq/prereq.sh
+#sudo chmod +x prereq/prereq.sh && prereq/prereq.sh
 
 #Instalation directory
-
 workdir=$PWD
 sudo mkdir blockchain 
 sudo chown $USER blockchain
 cd blockchain
 
 echo ""
-echo "####################################################### "
-echo "#GENERATING CRYPTO KEYS# "
-echo "####################################################### "
+echo "          ####################################################### "
+echo "                          #GENERATING CRYPTO KEYS# "
+echo "          ####################################################### "
 echo ""
 
 cryptogen generate --config=$workdir/config/crypto-config.yaml
 
 echo ""
-echo "####################################################### "
-echo "#GENERATING GENESIS BLOCK TX# "
-echo "####################################################### "
+echo "          ####################################################### "
+echo "                          #GENERATING GENESIS BLOCK TX# "
+echo "          ####################################################### "
 echo ""
 
 sudo mkdir -p artifacts 
@@ -39,9 +38,9 @@ OUTPUT=$workdir"/blockchain/artifacts/genesis.block"
 configtxgen -profile $PROFILEBLOCK -channelID $CHANNELID -outputBlock $OUTPUT -configPath $CONFIGPATH
 
 echo ""
-echo "####################################################### "
-echo "#GENERATING CHANNEL TX# "
-echo "####################################################### "
+echo "          ####################################################### "
+echo "                            #GENERATING CHANNEL TX# "
+echo "          ####################################################### "
 echo ""
 
 PROFILECHANNEL="ThreeOrgsChannel"
@@ -50,9 +49,9 @@ OUTPUT=$workdir"/blockchain/artifacts/channel.tx"
 configtxgen -profile $PROFILECHANNEL -channelID $CHANNELNAME -outputCreateChannelTx $OUTPUT -configPath $CONFIGPATH
 
 echo ""
-echo "####################################################### "
-echo "#ANCHOR PEERS TX# "
-echo "####################################################### "
+echo "          ####################################################### "
+echo "                                 #ANCHOR PEERS TX# "
+echo "          ####################################################### "
 echo ""
 
 anchor_array=($workdir"/blockchain/artifacts/Org1MSPanchors.tx" $workdir"/blockchain/artifacts/Org2MSPanchors.tx" $workdir"/blockchain/artifacts/Org3MSPanchors.tx")
@@ -61,9 +60,9 @@ for ((i = 0; i < ${#anchor_array[@]}; ++i)); do
 done
 
 echo ""
-echo "####################################################### "
-echo "#STARTING NETWORK# "
-echo "####################################################### "
+echo "          ####################################################### "
+echo "                              #NETWORK CONFIGS UP# "
+echo "          ####################################################### "
 echo ""
 
 docker rm -vf $(docker ps -a -q) && docker rmi -f $(docker images -a -q)
@@ -75,9 +74,9 @@ CHANNEL_NAME=$CHANNELNAME docker-compose -f $workdir/docker-base/docker-compose-
 
 
 echo ""
-echo "####################################################### "
-echo "#DENTRO DEL CLI# "
-echo "####################################################### "
+echo "          ####################################################### "
+echo "              #CREATING CHANNEL - BLOCK GENESIS - ANCHOR PEERS# "
+echo "          ####################################################### "
 echo "" 
 
 docker exec cli chmod +x scripts/init.sh
