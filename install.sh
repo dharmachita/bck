@@ -5,11 +5,11 @@
 # email: mauro.e.rambo@gmail.com
 #
 
-# Dependencies Installation
+# Instalación de Dependencias
 
-#sudo chmod +x prereq/prereq.sh && prereq/prereq.sh
+sudo chmod +x prereq/prereq.sh && prereq/prereq.sh
 
-#Instalation directory
+#Directorio de instalación
 workdir=$PWD
 sudo mkdir blockchain 
 sudo chown $USER blockchain
@@ -17,7 +17,7 @@ cd blockchain
 
 echo ""
 echo "          ####################################################### "
-echo "                          #GENERATING CRYPTO KEYS# "
+echo "                      #GENERANDO CLAVES CRIPTOGRAFICAS# "
 echo "          ####################################################### "
 echo ""
 
@@ -25,7 +25,7 @@ cryptogen generate --config=$workdir/config/crypto-config.yaml
 
 echo ""
 echo "          ####################################################### "
-echo "                          #GENERATING GENESIS BLOCK TX# "
+echo "                          #GENERANDO GENESIS BLOCK TX# "
 echo "          ####################################################### "
 echo ""
 
@@ -39,7 +39,7 @@ configtxgen -profile $PROFILEBLOCK -channelID $CHANNELID -outputBlock $OUTPUT -c
 
 echo ""
 echo "          ####################################################### "
-echo "                            #GENERATING CHANNEL TX# "
+echo "                            #GENERANDO CHANNEL TX# "
 echo "          ####################################################### "
 echo ""
 
@@ -50,7 +50,7 @@ configtxgen -profile $PROFILECHANNEL -channelID $CHANNELNAME -outputCreateChanne
 
 echo ""
 echo "          ####################################################### "
-echo "                                 #ANCHOR PEERS TX# "
+echo "                          #GENERANDO ANCHOR PEERS TX# "
 echo "          ####################################################### "
 echo ""
 
@@ -61,7 +61,7 @@ done
 
 echo ""
 echo "          ####################################################### "
-echo "                              #NETWORK CONFIGS UP# "
+echo "                      #LEVANTANDO RED DE CONTENEDORES# "
 echo "          ####################################################### "
 echo ""
 
@@ -72,13 +72,6 @@ export FABRIC_CFG_PATH=$workdir
 
 CHANNEL_NAME=$CHANNELNAME docker-compose -f $workdir/docker-base/docker-compose-cli-couchdb.yaml up -d
 
-
-echo ""
-echo "          ####################################################### "
-echo "              #CREATING CHANNEL - BLOCK GENESIS - ANCHOR PEERS# "
-echo "          ####################################################### "
-echo "" 
-
-docker exec cli chmod +x scripts/init.sh
-docker exec cli scripts/init.sh
+docker exec cli chmod +x scripts/up.sh
+docker exec cli scripts/up.sh
 

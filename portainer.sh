@@ -12,7 +12,7 @@ sudo zypper install curl
 
 echo ""
 echo "####################################################### "
-echo "#STARTING PORTAINER# "
+echo "              #INICIAND PORTAINER# "
 echo "####################################################### "
 echo ""
 
@@ -28,7 +28,7 @@ docker run -d -p 8000:8000 -p 9000:9000 --name portainer \
 
 echo ""
 echo "####################################################### "
-echo "INICIAR NAVEGADOR"
+echo "               #ABRIR NAVEGADOR#"
 echo "####################################################### "
 echo ""
 
