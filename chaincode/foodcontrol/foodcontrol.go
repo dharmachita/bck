@@ -1,10 +1,9 @@
 package main
 
-import(
+import (
 	"encoding/json"
 	"fmt"
 	"github.com/hyperledger/fabric-contract-api-go/contractapi"
-	
 )
 
 type SmartContract struct {
@@ -13,20 +12,20 @@ type SmartContract struct {
 
 //Activo
 type Food struct {
-	Farmer string `json:"farmer"`
+	Farmer  string `json:"farmer"`
 	Variety string `json:"variety"`
 }
 
-func (s *SmartContract) Set(ctx contractapi.TransactionContextInterface, foodId string, farmer string, variety string ) error {
-	
+func (s *SmartContract) Set(ctx contractapi.TransactionContextInterface, foodId string, farmer string, variety string) error {
+
 	food, err := Query(ctx, foodId)
 	if food != nil {
 		fmt.Printf("foodId already exists: %s", err.Error())
 		return err
 	}
-	
+
 	food := Food{
-		Farmer: farmer, 
+		Farmer:  farmer,
 		Variety: variety,
 	}
 
@@ -36,7 +35,7 @@ func (s *SmartContract) Set(ctx contractapi.TransactionContextInterface, foodId 
 		return err
 	}
 
-	return ctx.GetStub().PutState(foodId, foodAsBytes) 
+	return ctx.GetStub().PutState(foodId, foodAsBytes)
 }
 
 func (s *SmartContract) Query(ctx contractapi.TransactionContextInterface, foodId string) (*Food, error) {
@@ -69,5 +68,3 @@ func main() {
 		fmt.Printf("Error starting foodcontrol chaincode: %s", err.Error())
 	}
 }
-
-  
