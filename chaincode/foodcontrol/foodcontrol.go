@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+
 	"github.com/hyperledger/fabric-contract-api-go/contractapi"
 )
 
@@ -17,12 +18,6 @@ type Food struct {
 }
 
 func (s *SmartContract) Set(ctx contractapi.TransactionContextInterface, foodId string, farmer string, variety string) error {
-
-	food, err := Query(ctx, foodId)
-	if food != nil {
-		fmt.Printf("foodId already exists: %s", err.Error())
-		return err
-	}
 
 	food := Food{
 		Farmer:  farmer,
@@ -46,7 +41,7 @@ func (s *SmartContract) Query(ctx contractapi.TransactionContextInterface, foodI
 	}
 
 	if foodAsBytes == nil {
-		return nil, fmt.Errorf("Food not found:", foodId)
+		return nil, fmt.Errorf("%s does not exist", foodId)
 	}
 
 	food := new(Food)
