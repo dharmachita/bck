@@ -9,7 +9,7 @@
 tmppwd=$PWD
 #Utils
 echo "####################################################### "
-echo "#INSTALLING UTILS# "
+echo "                 #INSTALLING UTILS# "
 echo "####################################################### "
 #unzip
 sudo apt install unzip -y
@@ -94,7 +94,7 @@ mkdir $USER/.docker
 sudo chown "$USER":"$USER" /home/"$USER"/.docker -R
 sudo chmod g+rwx "$HOME/.docker" -R
 sudo chmod 666 /var/run/docker.sock
-test the fix
+#test the fix
 docker run hello-world
 
 

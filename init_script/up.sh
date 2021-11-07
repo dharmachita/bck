@@ -63,7 +63,7 @@ peer channel update \
     -o orderer.acme.com:7050 \
     -c $CHANNEL_NAME \
     -f ./channel-artifacts/Org1MSPanchors.tx \
-    --tls true --cafile $ORDERER_CA
+    --tls --cafile $ORDERER_CA
 
 #Definir anchorpeer para Org2
 CORE_PEER_MSPCONFIGPATH=$CORE_PEER_MSPCONFIGPATH_ORG2 \
@@ -74,7 +74,7 @@ CORE_PEER_MSPCONFIGPATH=$CORE_PEER_MSPCONFIGPATH_ORG2 \
         -o orderer.acme.com:7050 \
         -c $CHANNEL_NAME \
         -f ./channel-artifacts/Org2MSPanchors.tx \
-        --tls true --cafile $ORDERER_CA
+        --tls --cafile $ORDERER_CA
 
 #Definir anchorpeer para Org3
 CORE_PEER_MSPCONFIGPATH=$CORE_PEER_MSPCONFIGPATH_ORG3 \
@@ -85,7 +85,7 @@ CORE_PEER_MSPCONFIGPATH=$CORE_PEER_MSPCONFIGPATH_ORG3 \
         -o orderer.acme.com:7050 \
         -c $CHANNEL_NAME \
         -f ./channel-artifacts/Org3MSPanchors.tx \
-        --tls true --cafile $ORDERER_CA
+        --tls --cafile $ORDERER_CA
 
 echo ""
 echo "          ####################################################### "
