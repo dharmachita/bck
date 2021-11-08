@@ -28,7 +28,7 @@ peer lifecycle chaincode install ${CHAINCODE_NAME}.tar.gz
 CORE_PEER_MSPCONFIGPATH=$CORE_PEER_PATH_ORG2/users/Admin@org2.acme.com/msp \
     CORE_PEER_ADDRESS=peer0.org2.acme.com:7051 \
     CORE_PEER_LOCALMSPID="Org2MSP" \
-    CORE_PEER_TLS_ROOTCERT_FILE=CORE_PEER_PATH_ORG2/peers/peer0.org2.acme.com/tls/ca.crt \
+    CORE_PEER_TLS_ROOTCERT_FILE=$CORE_PEER_PATH_ORG2/peers/peer0.org2.acme.com/tls/ca.crt \
     peer lifecycle chaincode install ${CHAINCODE_NAME}.tar.gz
 
 CORE_PEER_MSPCONFIGPATH=$CORE_PEER_PATH_ORG3/users/Admin@org3.acme.com/msp \

@@ -7,7 +7,10 @@
 
 # Instalación de Dependencias
 
-sudo chmod +x prereq/prereq.sh && prereq/prereq.sh
+#sudo chmod +x prereq/prereq.sh && prereq/prereq.sh
+
+echo 'export PATH=$PATH:$HOME/hyperledger/fabric/fabric-samples/bin' >> ~/.profile
+source ~/.profile
 
 #Directorio de instalación
 workdir=$PWD
@@ -72,6 +75,6 @@ export FABRIC_CFG_PATH=$workdir
 
 CHANNEL_NAME=$CHANNELNAME docker-compose -f $workdir/docker-base/docker-compose-cli-couchdb.yaml up -d
 
-docker exec cli chmod +x scripts/up.sh
-docker exec cli scripts/up.sh
+#docker exec cli chmod +x scripts/up.sh
+#docker exec cli scripts/up.sh
 
