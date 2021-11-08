@@ -12,7 +12,7 @@ sudo zypper install curl
 
 echo ""
 echo "####################################################### "
-echo "              #INICIAND PORTAINER# "
+echo "              #INICIANDO PORTAINER# "
 echo "####################################################### "
 echo ""
 

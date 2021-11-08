@@ -68,13 +68,13 @@ echo "                      #LEVANTANDO RED DE CONTENEDORES# "
 echo "          ####################################################### "
 echo ""
 
-docker rm -vf $(docker ps -a -q) && docker rmi -f $(docker images -a -q)
+docker rm -vf $(docker ps -a -q)
 
 export VERBOSE=false
 export FABRIC_CFG_PATH=$workdir
 
 CHANNEL_NAME=$CHANNELNAME docker-compose -f $workdir/docker-base/docker-compose-cli-couchdb.yaml up -d
 
-#docker exec cli chmod +x scripts/up.sh
-#docker exec cli scripts/up.sh
+docker exec cli chmod +x scripts/up.sh
+docker exec cli scripts/up.sh
 

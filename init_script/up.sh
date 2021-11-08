@@ -27,6 +27,7 @@ peer channel create \
     -f ./channel-artifacts/channel.tx \
     --tls true --cafile $ORDERER_CA
 
+sleep 10
 
 echo ""
 echo "          ####################################################### "
@@ -92,3 +93,5 @@ echo "          ####################################################### "
 echo "                        #CONFIGURACION DE RED COMPLETA# "
 echo "          ####################################################### "
 echo ""
+
+/opt/gopath/src/github.com/chaincode/foodcontrol_installer.sh
